@@ -1,0 +1,160 @@
+/*============ Home Component ====================*/
+/*============== Style.CSS ==================================*/
+@font-face {
+    font-family: "Raleway-Medium";
+    src: url('/fonts/Raleway-Medium.ttf');
+}
+@font-face {
+    font-family: "Raleway-Regular";
+    src: url("/fonts/Raleway-Regular.ttf");
+}
+/* Header star */
+
+a{
+    color: inherit;
+}
+
+.fa{
+    margin-left: 3px;
+}
+.content{
+    padding-left: 15%;
+}
+#blocks{
+    margin-left: -13px;
+}
+
+.blocks{
+    width: 100%;
+    height: 175px;
+    background-color: #3498db;
+    text-align: center;
+    color: white;
+    font-family: Raleway-Regular;
+    font-size: 14px;
+    display: table;
+    margin-bottom: 20px;
+}
+
+.blocks h5{
+    display: table-cell;
+    vertical-align: middle;
+}
+/*About Us end */
+
+/*Connect Start*/
+
+.bg-header-image{
+    background: url("/Untitled-1.png");
+    background-size: cover;
+    min-height: 450px ;
+}
+
+.header-text-content{
+    margin-top: 4em;
+}
+
+.text-shrink{
+    line-height: 1px;
+}
+
+.top-20{
+    margin-top: 20px;
+}
+
+.block-row{
+    margin-top: 30px;
+}
+
+.third-div-connect{
+    background-image: url("/devices.png");
+}
+.fifth-div-follow{
+    background-color: #E8EAF6;
+    height: 220px;
+}
+.social-site-font{
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+/*============= Margin.CSS ===================================*/
+.second-div-top{
+    margin-top: 20px;
+}
+
+.header-div-top{
+    margin-top: 30px;
+}
+.header-text-content-top{
+    margin-top: 120px;
+}
+.third-div-connect{
+    height:430px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.second-div-about{
+    margin-bottom: 20px;
+}
+
+/*======================= Text.CSS =============================*/
+@font-face {
+    font-family: "Raleway-Medium";
+    src: url('/fonts/Raleway-Medium.ttf');
+}
+@font-face {
+    font-family: "Raleway-Regular";
+    src: url("/fonts/Raleway-Regular.ttf");
+}
+
+.text-intro{
+    font-family: Raleway-Medium;
+}
+.text-desc{
+    font-family: Raleway-Regular;
+}
+.text-white{
+    color: #ffffff;
+}
+.text-size-content{
+    font-size: 27px;
+
+}
+.cta-font{
+    font-size: 14px;
+}
+.text-primary{
+    color: #3498db;
+}
+
+/*========================== Button.CSS ===========================================*/
+.btn-main{
+    background: #3498db;
+    color: #fff;
+
+}
+
+.btn-main:hover{
+    background: #304FFE;
+    color: #fff;
+}
+
+.btn-plain{
+    color: #fff;
+}
+.btn-plain:hover{
+    background: #3498db ;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-outline{
+    border: 2px solid #3498db;
+    padding: 10px 40px;
+}
+.btn-flat{
+    border-radius:0 ;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
