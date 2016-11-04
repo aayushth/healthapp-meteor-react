@@ -158,3 +158,151 @@ a{
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
 }
+
+/*Info Component*/
+.top-bar{
+    background-color: #3498db;
+}
+.user-home{
+    margin-left: 0;
+}
+.user-home:hover{
+    text-decoration: none;
+}
+
+.user-account{
+    margin-top: 10px;
+}
+.user-navbar {
+    background-color: #BDBDBD;
+}
+.text-nav li a {
+    color: black;
+    padding: 10px;
+}
+
+#active a{
+    background-color: #757575;
+    color: white;
+}
+.user-nav ul li a:hover {
+    transition:  0.3s;
+    color: white;
+    background-color: #757575;
+}
+.text-nav a:hover{
+    text-decoration: none;
+}
+.user-nav ul li {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.quick-links{
+    margin-top: 50px;
+}
+
+.blocks{
+    width: 100%;
+    height: 175px;
+    background-color: #3498db;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+    font-family: "Raleway-Medium";
+    display: table;
+
+}
+.blocks h5{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+}
+.text-intro{
+    font-family: Raleway-Medium;
+}
+.text-desc{
+    font-family: Raleway-Regular;
+}
+.text-white{
+    color: #ffffff;
+}
+.top-bar{
+  background-color: #3498db;
+  border-radius: 0;
+  color: white;
+}
+
+.user-home{
+    margin-left: 0;
+}
+.user-account:hover{
+  background-color: #BDBDBD;
+}
+.user-home a:hover{
+    text-decoration: none;
+}
+.user-navbar {
+    background-color: #BDBDBD;
+    height: 40px;
+}
+.text-nav li a {
+    color: black;
+    padding: 10px;
+}
+.user-nav {
+  margin-top: -20px;
+}
+#active a{
+    background-color: #757575;
+    color: white;
+}
+.user-nav ul li a:hover {
+    transition:  0.3s;
+    color: white;
+    background-color: #757575;
+}
+.text-nav a:hover{
+    text-decoration: none;
+}
+.user-nav ul li {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.quick-links{
+    margin-top: 50px;
+}
+
+.blocks{
+    width: 100%;
+    height: 175px;
+    background-color: #3498db;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+    font-family: "Raleway-Medium";
+    display: table;
+
+}
+.blocks h5{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+}
+.navbar-content {
+    color: black;
+    width: 200px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.sign-out {
+  border-radius: 0;
+}
