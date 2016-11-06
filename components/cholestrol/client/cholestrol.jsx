@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-import Timeline from './container/timeline.js';
 
-export default class Pressure extends Component{
+export default class Cholestrol extends Component{
   constructor(props){
     super(props);
   }
@@ -31,24 +30,6 @@ export default class Pressure extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    let high=$("#high").val();
-    let low=$("#low").val();
-    let data={
-              highPressure:high,
-              lowPressure:low,
-              created_at:Date.now(),
-              updated_at:Date.now()
-             }
-    Meteor.call("enterPressureData",data,function(err){
-      if(!err){
-        $("#high").val('');
-        $("#low").val('');
-        Bert.alert("Success on submitting data",'success','growl-top-right');
-      }
-      else{
-        Bert.alert(err,'danger');
-      }
-    });
   }
 
   render(){
@@ -59,7 +40,7 @@ export default class Pressure extends Component{
     <div>
       <div className="navbar narvar-static-top top-bar" >
         <div className="container">
-          <a href="/" className="navbar-brand text-intro text-white">Online Patient Portal</a>
+          <a href="/info" className="navbar-brand text-intro text-white">Online Patient Portal</a>
 
           <ul className="nav navbar-nav navbar-right">
                 <li className="dropdown ">
@@ -109,19 +90,19 @@ export default class Pressure extends Component{
          <div className="col-md-8 col-md-offset-2">
            <div className="panel panel-primary">
               <div className="panel-heading">
-                <div className="panel-title">Blood Pressure Entry Form</div>
+                <div className="panel-title">Cholestrol Entry Form</div>
               </div>
               <div className="panel-body">
 
                 <form onSubmit={this.handleSubmit}>
-                 <div className="form-group">
-                   <label htmlFor="high">High Pressure:</label>
-                   <input type="number" id="high" className="form-control" placeholder="High Value" required/>
-                 </div>
-                 <div className="form-group">
-                   <label htmlFor="low">Low Pressure:</label>
-                   <input type="number" id="low" className="form-control" placeholder="Low Value" required/>
-                 </div>
+                <div className="form-group">
+                  <label htmlFor="hdl">High Density Lipoproteins(HDL):</label>
+                  <input type="number" id="hdl" className="form-control" placeholder="Enter HDL Value" required/>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="ldl">Low Density Lipoproteins(LDL):</label>
+                  <input type="number" id="ldl" className="form-control" placeholder="Enter LDL Value" required/>
+                </div>
                  <button type="submit" className="btn btn-default">Submit</button>
                 </form>
 
@@ -131,7 +112,45 @@ export default class Pressure extends Component{
        </div>
       </div>
 
-      <Timeline />
+      <div className="container-fluid">
+       <div className="row">
+        <div className="col-md-8 col-md-offset-2">
+
+         <div className="panel panel-primary">
+          <div className="panel-heading">
+           <div className="panel-title">Timeline of Cholestrol History Record</div>
+          </div>
+          <div className="panel-body">
+
+            <div id="timeline" className="timeline-container">
+              <div className="timeline-wrapper">
+                <h2 className="timeline-time">1976</h2>
+                <dl className="timeline-series">
+                  <dt className="timeline-event" id="event01"><a>HDL:45 mg/dl</a></dt>
+                  <dd className="timeline-event-content" id="event01EX">
+                    <p>Content</p>
+                  </dd>
+                </dl>
+              </div>
+              <div className="timeline-wrapper">
+                <h2 className="timeline-time">1976</h2>
+                <dl className="timeline-series">
+                  <dt className="timeline-event" id="event02"><a>LDL:110 mg/dl</a></dt>
+                  <dd className="timeline-event-content" id="event02EX">
+                    <p>Content</p>
+                  </dd>
+                </dl>
+              </div>
+              <br className="clear" />
+            </div>
+
+          </div>
+         </div>
+
+
+        </div>
+       </div>
+      </div>
 
 </div>
     );

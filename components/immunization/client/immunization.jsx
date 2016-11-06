@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-import Timeline from './container/timeline.js';
 
-export default class Pressure extends Component{
+export default class Immunization extends Component{
   constructor(props){
     super(props);
   }
@@ -31,24 +30,7 @@ export default class Pressure extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    let high=$("#high").val();
-    let low=$("#low").val();
-    let data={
-              highPressure:high,
-              lowPressure:low,
-              created_at:Date.now(),
-              updated_at:Date.now()
-             }
-    Meteor.call("enterPressureData",data,function(err){
-      if(!err){
-        $("#high").val('');
-        $("#low").val('');
-        Bert.alert("Success on submitting data",'success','growl-top-right');
-      }
-      else{
-        Bert.alert(err,'danger');
-      }
-    });
+
   }
 
   render(){
@@ -77,7 +59,7 @@ export default class Pressure extends Component{
                            </div>
                            <div className="col-sm-9">
                             <p><strong> {name} </strong></p>
-                            <a href="#" className="btn btn-primary btn-block btn-sm sign-out">View Profile</a>
+                            <a href="profile" className="btn btn-primary btn-block btn-sm sign-out">View Profile</a>
                            </div>
                          </div>
                         </div>
@@ -109,18 +91,50 @@ export default class Pressure extends Component{
          <div className="col-md-8 col-md-offset-2">
            <div className="panel panel-primary">
               <div className="panel-heading">
-                <div className="panel-title">Blood Pressure Entry Form</div>
+                <div className="panel-title">Immunization Entry Form</div>
               </div>
               <div className="panel-body">
 
                 <form onSubmit={this.handleSubmit}>
-                 <div className="form-group">
-                   <label htmlFor="high">High Pressure:</label>
-                   <input type="number" id="high" className="form-control" placeholder="High Value" required/>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="bcg" value="bcg" />B.C.G
+                   </label>
                  </div>
-                 <div className="form-group">
-                   <label htmlFor="low">Low Pressure:</label>
-                   <input type="number" id="low" className="form-control" placeholder="Low Value" required/>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="dpt" value="dpt" />D.P.T
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="polio" value="polio" />Polio
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="measles" value="measles" />Measles
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="je" value="je" />J.E
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="hepatitisB-I" value="hepatitis B-I"/>Hepatitis B-I
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="hepatitisB-II" value="hepatitis B-II" />Hepatitis B-II
+                   </label>
+                 </div>
+                 <div className="checkbox">
+                   <label>
+                   <input type="checkbox" id="hepatitisB-III" value="hepatitis B-III"/>Hepatitis B-III
+                   </label>
                  </div>
                  <button type="submit" className="btn btn-default">Submit</button>
                 </form>
@@ -131,7 +145,45 @@ export default class Pressure extends Component{
        </div>
       </div>
 
-      <Timeline />
+      <div className="container-fluid">
+       <div className="row">
+        <div className="col-md-8 col-md-offset-2">
+
+         <div className="panel panel-primary">
+          <div className="panel-heading">
+           <div className="panel-title">Timeline of Immunization History Record</div>
+          </div>
+          <div className="panel-body">
+
+            <div id="timeline" className="timeline-container">
+              <div className="timeline-wrapper">
+                <h2 className="timeline-time">1976</h2>
+                <dl className="timeline-series">
+                  <dt className="timeline-event" id="event01"><a>D.P.T</a></dt>
+                  <dd className="timeline-event-content" id="event01EX">
+                    <p>Content</p>
+                  </dd>
+                </dl>
+              </div>
+              <div className="timeline-wrapper">
+                <h2 className="timeline-time">1976</h2>
+                <dl className="timeline-series">
+                  <dt className="timeline-event" id="event02"><a>B.C.G</a></dt>
+                  <dd className="timeline-event-content" id="event02EX">
+                    <p>Content</p>
+                  </dd>
+                </dl>
+              </div>
+              <br className="clear" />
+            </div>
+
+          </div>
+         </div>
+
+
+        </div>
+       </div>
+      </div>
 
 </div>
     );

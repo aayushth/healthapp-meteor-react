@@ -2,13 +2,13 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import Layout from '../../../../client/commonUi/layout/layout.jsx';
-import Pressure from '../../../info/client/container/login-data1.js';
+import Hweight from '../../../info/client/container/login-data5.js';
 
-FlowRouter.route("/pressure",{
-  name:'pressure',
+FlowRouter.route("/hweight",{
+  name:'hweight',
   action(){
     mount(Layout,{
-      content:(<Pressure />)
+      content:(<Hweight />)
     });
   }
 });

@@ -306,3 +306,53 @@ a{
 .sign-out {
   border-radius: 0;
 }
+
+/*===============Pressure Component=================*/
+.timeline-wrapper h2{
+  font-size: 15px !important;
+  font-weight: bold !important;
+  color:darkblue;
+}
+.timeline-series dt{
+  font-size: 15px !important;
+  line-height: 0.2em !important;
+  margin: 0 0 8px !important;
+}
+
+/*===============Profile Component=================*/
+.profile-nav {
+  margin-top: 30px;
+}
+.user-navbar {
+    background-color: #BDBDBD;
+    height: 40px;
+}
+.text-nav li a {
+    color: black;
+    padding: 10px;
+}
+.user-nav {
+  margin-top: -75px;
+}
+.user-nav ul{
+  margin-left: 200px;
+}
+.user-nav ul li a:hover {
+    transition:  0.3s;
+    color: white;
+    background-color: #757575;
+}
+.text-nav a:hover{
+    text-decoration: none;
+}
+.user-nav ul li {
+    padding: 20px;
+}
+.table {
+  margin-top: 30px;
+  color: white;
+
+}
+.table-bg {
+  background-color: #3498db;
+}

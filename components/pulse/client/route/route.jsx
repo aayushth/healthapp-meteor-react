@@ -2,13 +2,13 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import Layout from '../../../../client/commonUi/layout/layout.jsx';
-import Pressure from '../../../info/client/container/login-data1.js';
+import Pulse from '../../../info/client/container/login-data4.js';
 
-FlowRouter.route("/pressure",{
-  name:'pressure',
+FlowRouter.route("/pulse",{
+  name:'pulse',
   action(){
     mount(Layout,{
-      content:(<Pressure />)
+      content:(<Pulse />)
     });
   }
 });

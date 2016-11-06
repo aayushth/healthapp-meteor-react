@@ -40,7 +40,7 @@ export default class Navbar extends Component{
                            </div>
                            <div className="col-sm-9">
                             <p><strong> {name} </strong></p>
-                            <a href="#" className="btn btn-primary btn-block btn-sm sign-out">View Profile</a>
+                            <a href="/profile" className="btn btn-primary btn-block btn-sm sign-out">View Profile</a>
                            </div>
                          </div>
                         </div>
@@ -65,6 +65,8 @@ export default class Navbar extends Component{
           </ul>
         </div>
       </div>
+
+
 
     );
   }
