@@ -1,8 +1,8 @@
-import Pressure from '../both/collection.js';
+import Immunization from '../both/collection.js';
 
 Meteor.methods({
-  'enterPressureData'(data){
+  'enterImmunizationData'(data){
     data.user=this.userId;
-    Pressure.insert(data);
+    Immunization.insert(data);
   },
 });

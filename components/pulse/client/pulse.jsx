@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Pulse extends Component{
   constructor(props){
@@ -30,6 +32,21 @@ export default class Pulse extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    let data={
+      pulse:$("#pulse").val(),
+      created_at:Date.now(),
+      updated_at:Date.now()
+    };
+
+    Meteor.call("enterPulseData",data,function(err){
+      if(!err){
+        $("#pulse").val('');
+        Bert.alert('Success on submitting data','success','growl-top-right');
+      }
+      else{
+        Bert.alert(err,'danger','growl-top-right');
+      }
+    });
   }
 
   render(){
@@ -84,7 +101,7 @@ export default class Pulse extends Component{
         </div>
       </div>
 
-{/*============================= Pressure Entry =================*/}
+{/*============================= Pulse Entry =================*/}
       <div className="container-fluid">
        <div className="row">
          <div className="col-md-8 col-md-offset-2">
@@ -108,45 +125,8 @@ export default class Pulse extends Component{
        </div>
       </div>
 
-      <div className="container-fluid">
-       <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-
-         <div className="panel panel-primary">
-          <div className="panel-heading">
-           <div className="panel-title">Timeline of Pulse History Record</div>
-          </div>
-          <div className="panel-body">
-
-            <div id="timeline" className="timeline-container">
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event01"><a>65</a></dt>
-                  <dd className="timeline-event-content" id="event01EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>70</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <br className="clear" />
-            </div>
-
-          </div>
-         </div>
-
-
-        </div>
-       </div>
-      </div>
+      <Timeline />
+      <Chart />
 
 </div>
     );

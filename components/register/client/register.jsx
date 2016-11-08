@@ -8,13 +8,29 @@ export default class Register extends Component{
   handleSubmit(e){
     e.preventDefault();
     let name=$("#fname").val();
+    let username=$("#username").val();
     let email=$("#email").val();
     let password=$("#password").val();
 
     Accounts.createUser({
+      username:username,
       email:email,
       password:password,
       profile:{name:name}
+    },function(err){
+      if(err){
+        Bert.alert(err.reason,'danger','growl-top-right');
+      }
+      else{
+        Meteor.call('sendVerificationLink',function(err){
+            if(!err){
+              Bert.alert("Welcome! success",'success','growl-top-right');
+            }
+            else{
+              Bert.alert(err.reason,'danger','growl-top-right');
+            }
+        });
+      }
     });
 
     FlowRouter.go("info");
@@ -33,6 +49,10 @@ export default class Register extends Component{
          <div className="form-group">
            <label htmlFor="fname">Full name:</label>
            <input type="text" id="fname" className="form-control" placeholder="Enter your name" required/>
+         </div>
+         <div className="form-group">
+           <label htmlFor="username">Username:</label>
+           <input type="text" id="username" className="form-control" placeholder="Pick your username" required/>
          </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>

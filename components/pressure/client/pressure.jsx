@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Pressure extends Component{
   constructor(props){
@@ -132,7 +133,7 @@ export default class Pressure extends Component{
       </div>
 
       <Timeline />
-
+      <Chart />
 </div>
     );
   }

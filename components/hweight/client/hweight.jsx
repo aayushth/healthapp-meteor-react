@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Hweight extends Component{
   constructor(props){
@@ -30,6 +32,23 @@ export default class Hweight extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    let data={
+      height:parseFloat($("#height").val()),
+      weight:parseFloat($("#weight").val()),
+      created_at:Date.now(),
+      updated_at:Date.now()
+    };
+
+    Meteor.call('enterHweightData',data,function(err){
+      if(!err){
+        $("#height").val('');
+        $("#weight").val('');
+        Bert.alert('Success on submitting data','success','growl-top-right');
+      }
+      else{
+        Bert.alert(err,'danger','growl-top-right');
+      }
+    });
   }
 
   render(){
@@ -84,7 +103,7 @@ export default class Hweight extends Component{
         </div>
       </div>
 
-{/*============================= Pressure Entry =================*/}
+{/*============================= Hweight Entry =================*/}
       <div className="container-fluid">
        <div className="row">
          <div className="col-md-8 col-md-offset-2">
@@ -112,46 +131,8 @@ export default class Hweight extends Component{
        </div>
       </div>
 
-      <div className="container-fluid">
-       <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-
-         <div className="panel panel-primary">
-          <div className="panel-heading">
-           <div className="panel-title">Timeline of Height Weight Ratio History Record</div>
-          </div>
-          <div className="panel-body">
-
-            <div id="timeline" className="timeline-container">
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event01"><a>1.5</a></dt>
-                  <dd className="timeline-event-content" id="event01EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>1.3</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <br className="clear" />
-            </div>
-
-          </div>
-         </div>
-
-
-        </div>
-       </div>
-      </div>
-
+      <Timeline />
+      <Chart />
 </div>
     );
   }

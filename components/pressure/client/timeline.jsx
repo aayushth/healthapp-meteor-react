@@ -6,12 +6,12 @@ export default class Timeline extends Component{
   }
 
   renderTimeline(){
-    return this.props.data.map((pressure) => (
+    return this.props.data.map((pressure,index) => (
       <div className="timeline-wrapper" key={pressure._id}>
         <h2 className="timeline-time">{pressure.created_at}</h2>
         <dl className="timeline-series">
-          <dt className="timeline-event" id="event01"><a>{pressure.highPressure}/{pressure.lowPressure} mm of hg</a></dt>
-          <dd className="timeline-event-content" id="event01EX">
+          <dt className="timeline-event" id={"event0"+index}><a>{pressure.highPressure}/{pressure.lowPressure} mm of hg</a></dt>
+          <dd className="timeline-event-content" id={"event0"+index+"EX"}>
             <p>Content</p>
           </dd>
         </dl>
@@ -33,16 +33,6 @@ export default class Timeline extends Component{
 
             <div id="timeline" className="timeline-container">
               {this.renderTimeline()}
-
-              {/*<div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>130/80 mm of hg</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>*/}
               <br className="clear" />
             </div>
 

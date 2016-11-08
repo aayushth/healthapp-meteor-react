@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Cholestrol extends Component{
   constructor(props){
@@ -30,6 +32,24 @@ export default class Cholestrol extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    let hdl=$("#hdl").val();
+    let ldl=$("#ldl").val();
+    let data={
+      hdl:hdl,
+      ldl:ldl,
+      created_at:Date.now(),
+      updated_at:Date.now()
+    }
+    Meteor.call("enterCholestrolData",data,function(err){
+      if(!err){
+      $("#hdl").val('');
+      $("#ldl").val('');
+      Bert.alert("Success on submitting data",'success','growl-top-right');
+      }
+      else{
+        Bert.alert(err,'danger','growl-top-right');
+      }
+    });
   }
 
   render(){
@@ -84,7 +104,7 @@ export default class Cholestrol extends Component{
         </div>
       </div>
 
-{/*============================= Pressure Entry =================*/}
+{/*============================= Cholestrol Entry =================*/}
       <div className="container-fluid">
        <div className="row">
          <div className="col-md-8 col-md-offset-2">
@@ -112,46 +132,8 @@ export default class Cholestrol extends Component{
        </div>
       </div>
 
-      <div className="container-fluid">
-       <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-
-         <div className="panel panel-primary">
-          <div className="panel-heading">
-           <div className="panel-title">Timeline of Cholestrol History Record</div>
-          </div>
-          <div className="panel-body">
-
-            <div id="timeline" className="timeline-container">
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event01"><a>HDL:45 mg/dl</a></dt>
-                  <dd className="timeline-event-content" id="event01EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>LDL:110 mg/dl</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <br className="clear" />
-            </div>
-
-          </div>
-         </div>
-
-
-        </div>
-       </div>
-      </div>
-
+      <Timeline />
+      <Chart />
 </div>
     );
   }

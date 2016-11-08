@@ -356,3 +356,62 @@ a{
 .table-bg {
   background-color: #3498db;
 }
+
+/*===============Profile Info Component=================*/
+.top-bar{
+  background-color: #3498db;
+  border-radius: 0;
+  color: white;
+}
+
+.button-shape {
+  border-radius: 0px !important;
+}
+.panel-header {
+  background-color: #3498db !important;
+}
+.panel-footer {
+  background-color: white !important;
+}
+
+/*===============Profile Update Component=================*/
+.top-bar{
+  background-color: #3498db;
+  border-radius: 0;
+  color: white;
+}
+.nav-tabs {
+  background-color: #BDBDBD;
+  border: 1px solid #3498db;
+}
+.update-tab li {
+  width :100%;
+}
+.delete-email {
+  margin-left: 20px;
+}
+.button-shape {
+  border-radius: 0px !important;
+}
+.panel-header {
+  background-color: #3498db !important;
+}
+.panel-footer {
+  background-color: white !important;
+}
+.button-margin {
+  margin-top: 5px;
+}
+
+/*===============Prescription Component=================*/
+h1{
+    margin-bottom: 40px;
+}
+label {
+    color: #333;
+}
+.btn-send {
+  background-color: #3498db;
+  border: 0px !important;
+
+}

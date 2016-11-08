@@ -14,6 +14,9 @@ export default class Login extends Component{
       if(!err){
         FlowRouter.go("info");
       }
+      else{
+        Bert.alert(err.reason,'danger','growl-top-right');
+      }
     });
   }
 

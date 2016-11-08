@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Immunization extends Component{
   constructor(props){
@@ -30,6 +32,34 @@ export default class Immunization extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    let bcg=$('#bcg').is(':checked');
+    let dpt=$('#dpt').is(':checked');
+    let polio=$('#polio').is(':checked');
+    let measles=$('#measles').is(':checked');
+    let je=$('#je').is(':checked');
+    let hepatitisB1=$('#hepatitisB1').is(':checked');
+    let hepatitisB2=$('#hepatitisB2').is(':checked');
+    let hepatitisB3=$('#hepatitisB3').is(':checked');
+    let data={
+      bcg:bcg,
+      dpt:dpt,
+      polio:polio,
+      measles:measles,
+      je:je,
+      hepatitisB1:hepatitisB1,
+      hepatitisB2:hepatitisB2,
+      hepatitisB3:hepatitisB3,
+      created_at:Date.now(),
+      updated_at:Date.now()
+    }
+    Meteor.call("enterImmunizationData",data,function(err){
+      if(!err){
+        Bert.alert("Success on submitting data",'success','growl-top-right');
+      }
+      else{
+        Bert.alert(err,'danger','growl-top-right');
+      }
+    });
 
   }
 
@@ -85,7 +115,7 @@ export default class Immunization extends Component{
         </div>
       </div>
 
-{/*============================= Pressure Entry =================*/}
+{/*============================= Immunization Entry =================*/}
       <div className="container-fluid">
        <div className="row">
          <div className="col-md-8 col-md-offset-2">
@@ -123,17 +153,17 @@ export default class Immunization extends Component{
                  </div>
                  <div className="checkbox">
                    <label>
-                   <input type="checkbox" id="hepatitisB-I" value="hepatitis B-I"/>Hepatitis B-I
+                   <input type="checkbox" id="hepatitisB1" value="hepatitis B-I"/>Hepatitis B-I
                    </label>
                  </div>
                  <div className="checkbox">
                    <label>
-                   <input type="checkbox" id="hepatitisB-II" value="hepatitis B-II" />Hepatitis B-II
+                   <input type="checkbox" id="hepatitisB2" value="hepatitis B-II" />Hepatitis B-II
                    </label>
                  </div>
                  <div className="checkbox">
                    <label>
-                   <input type="checkbox" id="hepatitisB-III" value="hepatitis B-III"/>Hepatitis B-III
+                   <input type="checkbox" id="hepatitisB3" value="hepatitis B-III"/>Hepatitis B-III
                    </label>
                  </div>
                  <button type="submit" className="btn btn-default">Submit</button>
@@ -145,46 +175,8 @@ export default class Immunization extends Component{
        </div>
       </div>
 
-      <div className="container-fluid">
-       <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-
-         <div className="panel panel-primary">
-          <div className="panel-heading">
-           <div className="panel-title">Timeline of Immunization History Record</div>
-          </div>
-          <div className="panel-body">
-
-            <div id="timeline" className="timeline-container">
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event01"><a>D.P.T</a></dt>
-                  <dd className="timeline-event-content" id="event01EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>B.C.G</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <br className="clear" />
-            </div>
-
-          </div>
-         </div>
-
-
-        </div>
-       </div>
-      </div>
-
+      <Timeline />
+      <Chart />
 </div>
     );
   }

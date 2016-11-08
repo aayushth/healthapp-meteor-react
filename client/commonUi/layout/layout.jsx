@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default layout = ({content}) => (
+export default Layout = ({content}) => (
   <section>
       {content}
   </section>

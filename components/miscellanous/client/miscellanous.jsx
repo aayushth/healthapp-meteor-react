@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Timeline from './container/timeline.js';
+import Chart from './container/chart.js';
 
 export default class Miscellanous extends Component{
   constructor(props){
@@ -30,6 +32,25 @@ export default class Miscellanous extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    let data={
+      eye:$("#eye").val(),
+      nail:$("#nail").val(),
+      tongue:$("#tongue").val(),
+      created_at:Date.now(),
+      updated_at:Date.now()
+    };
+
+    Meteor.call("enterMiscellanousData",data,function(err){
+      if(!err){
+        $("#eye").val('');
+        $("#nail").val('');
+        $("#tongue").val('');
+        Bert.alert('Success on submitting data','success','growl-top-right');
+      }
+      else{
+        Bert.alert(err,'danger','growl-top-right');
+      }
+    });
   }
 
   render(){
@@ -84,7 +105,7 @@ export default class Miscellanous extends Component{
         </div>
       </div>
 
-{/*============================= Pressure Entry =================*/}
+{/*============================= Miscellanous Entry =================*/}
       <div className="container-fluid">
        <div className="row">
          <div className="col-md-8 col-md-offset-2">
@@ -97,15 +118,15 @@ export default class Miscellanous extends Component{
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="eye">Eyes Color:</label>
-                  <input type="text" id="eye" className="form-control" placeholder="Enter Eyes Color" required/>
+                  <input type="text" id="eye" className="form-control" placeholder="Enter Eyes Color" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="nail">Nail Color:</label>
-                  <input type="text" id="nail" className="form-control" placeholder="Enter Nail Color" required/>
+                  <input type="text" id="nail" className="form-control" placeholder="Enter Nail Color" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="tongue">Tongue Color:</label>
-                  <input type="text" id="tongue" className="form-control" placeholder="Enter Tongue Color" required/>
+                  <input type="text" id="tongue" className="form-control" placeholder="Enter Tongue Color" />
                 </div>
                  <button type="submit" className="btn btn-default">Submit</button>
                 </form>
@@ -116,46 +137,8 @@ export default class Miscellanous extends Component{
        </div>
       </div>
 
-      <div className="container-fluid">
-       <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-
-         <div className="panel panel-primary">
-          <div className="panel-heading">
-           <div className="panel-title">Timeline of Miscellanous History Record</div>
-          </div>
-          <div className="panel-body">
-
-            <div id="timeline" className="timeline-container">
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event01"><a>Nail Color:Red</a></dt>
-                  <dd className="timeline-event-content" id="event01EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <div className="timeline-wrapper">
-                <h2 className="timeline-time">1976</h2>
-                <dl className="timeline-series">
-                  <dt className="timeline-event" id="event02"><a>Eyes Color:Yellow</a></dt>
-                  <dd className="timeline-event-content" id="event02EX">
-                    <p>Content</p>
-                  </dd>
-                </dl>
-              </div>
-              <br className="clear" />
-            </div>
-
-          </div>
-         </div>
-
-
-        </div>
-       </div>
-      </div>
-
+      <Timeline />
+      <Chart />
 </div>
     );
   }
