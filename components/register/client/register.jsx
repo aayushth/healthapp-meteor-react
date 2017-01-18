@@ -11,27 +11,35 @@ export default class Register extends Component{
     let username=$("#username").val();
     let email=$("#email").val();
     let password=$("#password").val();
+    let role=$("#role").val().toLowerCase();
+    let users=[
+            {username:username,name:name,email:email,password:password,roles:role}
+            ];
+    //Looping the users
+    _.each(users,function(user){
+            let id;
+            id=Accounts.createUser({
+              username:user.username,
+              email:user.email,
+              password:user.password,
+              profile:{name:user.name,role:user.roles}
+            },function(err){
+              if(err){
+                Bert.alert(err.reason,'danger','growl-top-right');
+              }
+              else{
+                Meteor.call('sendVerificationLink',function(err){
+                    if(!err){
+                      Bert.alert("Welcome! success",'success','growl-top-right');
+                    }
+                    else{
+                      Bert.alert(err.reason,'danger','growl-top-right');
+                    }
+                });
+              }
+            });
 
-    Accounts.createUser({
-      username:username,
-      email:email,
-      password:password,
-      profile:{name:name}
-    },function(err){
-      if(err){
-        Bert.alert(err.reason,'danger','growl-top-right');
-      }
-      else{
-        Meteor.call('sendVerificationLink',function(err){
-            if(!err){
-              Bert.alert("Welcome! success",'success','growl-top-right');
-            }
-            else{
-              Bert.alert(err.reason,'danger','growl-top-right');
-            }
-        });
-      }
-    });
+          });
 
     FlowRouter.go("info");
   }
@@ -61,6 +69,10 @@ export default class Register extends Component{
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" className="form-control" placeholder="Password" required/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="role">Your Role:</label>
+            <input type="text" id="role" className="form-control" placeholder="Enter Your Identity" required/>
           </div>
           <button type="submit" className="btn btn-primary">Ready inside</button>
          </form>

@@ -15,10 +15,10 @@ export default class Home extends Component{
      <div className="container text-desc header-div-top">
          <h2 className="text-white text-intro">Online Patient Portal</h2>
          <ul className="list-inline text-size-content">
-             <li><a className="btn btn-link btn-plain text-white"> Explore</a> </li>
-             <li><a className="btn btn-link btn-plain text-white"> Health Problem </a> </li>
-             <li><a className="btn btn-link btn-plain text-white">Benefit of IT Health</a> </li>
-             <li><a className="btn btn-link btn-plain text-white"> Health IT Stories </a> </li>
+             <li><a href="/explore" className="btn btn-link btn-plain text-white"> Explore</a> </li>
+             <li><a href="/explore" className="btn btn-link btn-plain text-white"> Health Problem </a> </li>
+             <li><a href="/explore" className="btn btn-link btn-plain text-white">Benefit of IT Health</a> </li>
+             <li><a href="/explore" className="btn btn-link btn-plain text-white"> Health IT Stories </a> </li>
              <li className="pull-right"><a href="/login" className="btn btn-outline btn-plain btn-flat text-white"> Login </a> </li>
          </ul>
 
@@ -31,7 +31,7 @@ export default class Home extends Component{
              </div>
              <div className="row">
                  <div className="col-sm-3 top-20">
-                     <a className="btn btn-lg btn-flat btn-main">Explore<i className="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                     <a href="/explore" className="btn btn-lg btn-flat btn-main">Explore<i className="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                  </div>
              </div>
          </div>

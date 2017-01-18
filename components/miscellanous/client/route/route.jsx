@@ -6,6 +6,11 @@ import Miscellanous from '../../../info/client/container/login-data6.js';
 
 FlowRouter.route("/miscellanous",{
   name:'miscellanous',
+  triggersEnter:[function(context,redirect){
+    if(!Meteor.userId()){
+      redirect("/");
+    }
+  }],
   action(){
     mount(Layout,{
       content:(<Miscellanous />)

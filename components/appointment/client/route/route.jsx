@@ -4,11 +4,16 @@ import {mount} from 'react-mounter';
 import Layout from '../../../../client/commonUi/layout/layout.jsx';
 import Appointment from '../appointment.jsx';
 
-FlowRouter.route("/profile/appointment",{
+FlowRouter.route("/profile/appointment/:doctorId",{
   name:'appointment',
-  action(){
+  triggersEnter:[function(context,redirect){
+    if(!Meteor.userId()){
+      redirect("/");
+    }
+  }],
+  action(params){
     mount(Layout,{
-      content:(<Appointment />)
+      content:(<Appointment doctorid={params.doctorId} />)
     });
   }
 });

@@ -26,3 +26,5 @@ accounts-password
 themeteorchef:bert
 fortawesome:fontawesome
 email
+cfs:standard-packages
+cfs:filesystem

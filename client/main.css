@@ -306,6 +306,10 @@ a{
 .sign-out {
   border-radius: 0;
 }
+.value-color{
+  color:black;
+  font-size: 14px;
+}
 
 /*===============Pressure Component=================*/
 .timeline-wrapper h2{
@@ -414,4 +418,8 @@ label {
   background-color: #3498db;
   border: 0px !important;
 
+}
+.avatar{
+  width:200px;
+  height:200px;
 }

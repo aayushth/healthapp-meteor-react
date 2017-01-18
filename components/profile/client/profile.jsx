@@ -11,7 +11,10 @@ export default class Profile extends Component{
 
   render(){
     let name=this.props.data[0].map((users) =>(
-      <p key={users._id}>{users.profile.name}</p>
+     <div>
+      <h4><strong className="text-intro">{users.profile.name}</strong></h4>
+      <h5><strong><p className="text-desc">{users.username}</p></strong></h5>
+    </div>
     ));
 
     let pressure=this.props.data[1].map((pressure) =>(
@@ -49,6 +52,10 @@ export default class Profile extends Component{
       </tr>
     ));
 
+    let image=this.props.data[7].map((image) => (
+      <img key={image._id} src={image.profile.avatar} className="rounded float-xs-left avatar" />
+    ));
+
     return(
     //================ Profile Content ==================
     <section className="profile-content">
@@ -58,17 +65,18 @@ export default class Profile extends Component{
 
         <div className="row">
           <div className="col sm-3">
-            <a href="#"><img src="/nature.jpg" className="rounded float-xs-left" /></a>
+            <a href="#">{image}</a>
           </div>
-          <h4><strong>{name}</strong></h4>
+
+          {name}
+
         </div>
          <div className="row user-nav ">
            <div className=" col-sm-9">
              <ul className="list-inline text-nav ">
               <li><a href="/profile/info" className="text-intro text-navbar">Info</a></li>
               <li><a href="/profile/update" className="text-intro text-navbar">Update</a> </li>
-              <li><a href="/profile/prescription" className="text-intro text-navbar">Prescription</a> </li>
-              <li><a href="/profile/appointment" className="text-intro text-navbar">Appointment</a> </li>
+              <li><a href="/profile/notification" className="text-intro text-navbar">Notifications <span className="badge">{this.props.data[6]}</span></a> </li>
               <li><a href="/profile/follow" className="text-intro text-navbar">Following</a> </li>
              </ul>
            </div>

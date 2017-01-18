@@ -1,9 +1,11 @@
 import React,{Component} from 'react';
 import {Compare} from './helper/helper.js';
+import {Images} from '../both/collection1.js';
 
 export default class Pupdate extends Component{
   constructor(props){
     super(props);
+    this.state={imageId:''};
   }
 
   componentDidMount(){
@@ -84,6 +86,39 @@ export default class Pupdate extends Component{
     }
   }
 
+  uploadFile(e){
+      e.preventDefault();
+      var that=this;
+      FS.Utility.eachFile(e,function(file){
+       Images.insert(file,function(err,fileObj){
+          console.log(fileObj._id+fileObj.data.blob.name);
+           Meteor.call("enterImageData",fileObj._id,function(err){
+             if(!err){
+               Bert.alert("Successfully",'success');
+             }
+             else{
+               Bert.alert(err.reason,'danger');
+             }
+           });
+           that.setState({imageId:fileObj._id});
+       })
+     });
+    }
+
+  handleFileSubmit(e){
+   e.preventDefault();
+   let imageId=$("#fileid").val();
+   console.log(imageId);
+   Meteor.call("enterImageUrl",imageId,function(err){
+     if(!err){
+       Bert.alert("Successfully",'success');
+     }
+     else{
+       Bert.alert(err.reason,'danger');
+     }
+   });
+  }
+
   render(){
     return(
       <div className="container">
@@ -93,10 +128,10 @@ export default class Pupdate extends Component{
           <ul className="nav nav-tabs update-tab ">
             <li className="active"><a href="#profile" className="text-intro text-center" data-toggle="tab"><h4><i className="fa fa-user-plus " aria-hidden="true"></i></h4> Profile</a></li>
             <li><a href="#account" className="text-intro text-center" data-toggle="tab"><h4><i className="fa fa-user " aria-hidden="true"></i></h4>Account</a></li>
-            <li><a href="#security" className="text-intro text-center" data-toggle="tab"><h4><i className="fa fa-envelope " aria-hidden="true"></i></h4> Email</a></li>
+            <li><a href="#security" className="text-intro text-center" data-toggle="tab"><h4><i className="fa fa-envelope " aria-hidden="true"></i></h4> Change pic</a></li>
           </ul>
-
           <div className="tab-content col-sm-10">
+
            <div className="tab-pane active" id="profile">
 
            <div className="panel panel-default">
@@ -188,19 +223,20 @@ export default class Pupdate extends Component{
 
            <div className="tab-pane" id="security">
               <div className="panel panel-default">
-                <div className="panel-heading text-intro panel-header text-white">Email</div>
+                <div className="panel-heading text-intro panel-header text-white">Change Picture</div>
                 <div className="panel-body text-intro">
-                  <p className="">Your email address will be used for account-related notifications</p>
-                  <span>current email <a href="#" className="delete-email"><i className="fa fa-trash" aria-hidden="true"></i></a></span>
-                </div>
-                <div className="panel-footer ">
-                  <section className="">
-                    <label htmlFor="ex3"><strong><p className="text-intro">Add email address</p></strong></label>
-                    <input className="form-control" id="ex3" type="text" />
-                    <button type="buttn" className="btn btn-primary button-shape button-margin">Add</button>
-                  </section>
+                  <p className="">Upload your profile pic</p>
+                 <form onSubmit={this.handleFileSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputFile">File input</label>
+                    <input onChange={this.uploadFile.bind(this)} type="file" id="fileupload" />
 
+                    <input type="text" id="fileid" value={this.state.imageId} />
+                    <button type="submit" className="btn btn-primary button-shape text-intro">Change Picture</button>
                   </div>
+                 </form>
+                </div>
+
                 </div>
               </div>
            </div>

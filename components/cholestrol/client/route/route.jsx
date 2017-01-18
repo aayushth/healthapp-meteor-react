@@ -6,6 +6,11 @@ import Cholestrol from '../../../info/client/container/login-data7.js';
 
 FlowRouter.route("/cholestrol",{
   name:'cholestrol',
+  triggersEnter:[function(context,redirect){
+    if(!Meteor.userId()){
+      redirect("/");
+    }
+  }],
   action(){
     mount(Layout,{
       content:(<Cholestrol />)

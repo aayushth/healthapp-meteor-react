@@ -10,9 +10,9 @@ export default class Timeline extends Component{
       <div className="timeline-wrapper" key={immunization._id}>
         <h2 className="timeline-time">{immunization.created_at}</h2>
         <dl className="timeline-series">
-          <dt className="timeline-event" id={"event0"+index}><a>{immunization.bcg?'B.C.G':''}{immunization.dpt?'D.P.T':''}{immunization.polio?'Polio':''}
-          {immunization.measles?'Measles':''}{immunization.je?'J.E':''}{immunization.hepatitisB1?'Hepatitis-B I':''}
-          {immunization.hepatitisB2?'Hepatitis-B II':''}{immunization.hepatitisB3?'Hepatitis-B III':''}</a></dt>
+          <dt className="timeline-event" id={"event0"+index}><a>{immunization.bcg?'B.C.G':''} {immunization.dpt?'D.P.T':''} {immunization.polio?'Polio':''}
+          {immunization.measles?'Measles':''} {immunization.je?'J.E':''} {immunization.hepatitisB1?'Hepatitis-B I':''}
+          {immunization.hepatitisB2?'Hepatitis-B II':''} {immunization.hepatitisB3?'Hepatitis-B III':''}</a></dt>
           <dd className="timeline-event-content" id={"event0"+index+"EX"}>
             <p>Content</p>
           </dd>

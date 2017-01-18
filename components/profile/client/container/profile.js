@@ -1,17 +1,21 @@
 import { composeWithTracker } from 'react-komposer';
 import Profile from './../profile.jsx';
+import {Images} from '../../../pupdate/both/collection1.js';
 
 function composer(props,onData){
   let currentUser=Meteor.user();
   const subscription=Meteor.subscribe('getProfileData',);
    if(subscription.ready()){
+   let count=Prescription.find({sendTo:Meteor.userId()}).count();
    let data1=Meteor.users.find().fetch();
    let data2=Pressure.find().fetch();
    let data3=Cholestrol.find().fetch();
    let data4=Temperature.find().fetch();
    let data5=Pulse.find().fetch();
    let data6=Hweight.find().fetch();
-   let data=[data1,data2,data3,data4,data5,data6];
+   let data8=Meteor.users.find({_id:Meteor.userId()}).fetch();
+
+   let data=[data1,data2,data3,data4,data5,data6,count,data8];
    console.log(data);
    onData(null,{data});
  }
